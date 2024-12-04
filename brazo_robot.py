@@ -64,7 +64,7 @@ GPIO.setup(7, GPIO.IN) #chanel  tiene k ser un numero Tantas d esta linea como e
 
 def moveMotor(controlIn, motorOut):
 
-    """ Diferentes parametros del movimiento del motor
+   """ Diferentes parametros del movimiento del motor
    :param pulse_wide: mapeo de la posición del motor
    :param pulse_width: (pulse_wide / 1000000 * FRECUENCY) * 4096
    :param potVal: valor analógico del potenciometro
@@ -72,18 +72,17 @@ def moveMotor(controlIn, motorOut):
    # pulse width es un numero entero
    # potVal es un valor generado con el movimiento que se intercambia entre los dos robots 
     """
-
-    pulse_wide, pulse_width, potVal = -7
+   pulse_wide, pulse_width, potVal = -7
   
   #  potVal = analogRead(controlIn);  
-    potVal = GPIO.imput(controlIn)
+   potVal = GPIO.imput(controlIn)
 
-    pulse_wide = map(potVal, 800, 240, MIN_PULSE_WIDTH, MAX_PULSE_WIDTH)
-    pulse_width = int(float(pulse_wide) / 1000000 * FREQUENCY * 4096)   
+   pulse_wide = map(potVal, 800, 240, MIN_PULSE_WIDTH, MAX_PULSE_WIDTH)
+   pulse_width = int(float(pulse_wide) / 1000000 * FREQUENCY * 4096)   
 
 
  #   pwm.setPWM(motorOut, 0, pulse_width);
-    pwm = GPIO.PWM(motorOut, pulse_width)
+   pwm = GPIO.PWM(motorOut, pulse_width)
 
 while (True): 
   moveMotor(potWrist, wrist)
